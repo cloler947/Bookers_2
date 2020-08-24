@@ -2,5 +2,18 @@
 
 <p><%= @user.name %></p>
 <p><%= @user.introduction %></p>
-<p><%= attachment_image_tag @user, :profile_image, :fill, 60, 60,  %></p>
+<p><%= attachment_image_tag @user, :profile_image, format: 'jpeg', size: "10 x 100" %></p>
 <p><%= link_to "編集", edit_user_path(@user.id) %></p>
+
+<h2>NEW Book</h2>
+<%= form_for(Book.new) do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label "Opinion" %>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Create Book' %>
+
+<% end %>

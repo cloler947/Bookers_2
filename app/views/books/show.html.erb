@@ -1,2 +1,18 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<h1>Book detail</h1>
+<%= @book.title %>
+<%= @book.body %>
+
+
+
+<h2>NEW Book</h2>
+<%= form_for(Book.new) do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label "Opinion" %>
+  <%= f.text_area :body %>
+
+  <%= f.sumbmit 'Create Book' %>
+
+<% end %>
