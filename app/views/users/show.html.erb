@@ -1,19 +1,12 @@
-<h1>User info</h1>
 
-<p><%= @user.name %></p>
-<p><%= @user.introduction %></p>
-<p><%= attachment_image_tag @user, :profile_image, format: 'jpeg', size: "10 x 100" %></p>
-<p><%= link_to "編集", edit_user_path(@user.id) %></p>
+<%= render 'users/info', user: @user %>
 
-<h2>NEW Book</h2>
-<%= form_for(Book.new) do |f| %>
+<%= render 'books/form', book: Book.new %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<% @books.each do |book| %>
 
-  <%= f.label "Opinion" %>
-  <%= f.text_area :body %>
-
-  <%= f.submit 'Create Book' %>
+  <%= link_to book.title, book_path(book.id) %>
+  <%= book.body %>
 
 <% end %>
+

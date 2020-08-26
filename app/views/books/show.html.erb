@@ -1,3 +1,9 @@
+
+
+<%= render 'users/info', user: @book.user %>
+
+<%= render 'books/form' %>
+
 <h1>Book detail</h1>
 <%= @book.title %>
 <%= @book.body %>
@@ -5,17 +11,3 @@
 <%= link_to "Edit", edit_book_path(@book) %>
 
 <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" =>  "本当に消しますか?" %>
-
-
-<h2>NEW Book</h2>
-<%= form_for(Book.new) do |f| %>
-
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label "Opinion" %>
-  <%= f.text_area :body %>
-
-  <%= f.submit 'Create Book' %>
-
-<% end %>
