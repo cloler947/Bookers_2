@@ -1,12 +1,15 @@
 
-<%= render 'users/info', user: @user %>
+<div class="col-xs-3">
+  <%= render 'users/info', user: @user %>
+  <%= render 'books/form', book: Book.new %>
+</div>
 
-<%= render 'books/form', book: Book.new %>
+<div class="col-xs-9">
+  <% @books.each do |book| %>
 
-<% @books.each do |book| %>
+    <%= link_to book.title, book_path(book.id) %>
+    <%= book.body %>
 
-  <%= link_to book.title, book_path(book.id) %>
-  <%= book.body %>
-
-<% end %>
+  <% end %>
+</div>
 

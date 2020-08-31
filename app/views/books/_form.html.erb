@@ -1,4 +1,4 @@
-<h2>NEW Book</h2>
+<h2>NEW book</h2>
 <%= form_for(Book.new) do |f| %>
 
   <% if book.errors.any? %>
@@ -10,12 +10,14 @@
     </ul>
   <% end %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label "Opinion" %>
-  <%= f.text_area :body %>
-
-  <%= f.submit 'Create Book' %>
+  <div class="field row">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field row">
+    <%= f.label "Opinion" %>
+    <%= f.text_area :body %>
+  </div>
+    <%= f.submit 'Create Book' %>
 
 <% end %>
