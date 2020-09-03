@@ -1,20 +1,30 @@
+<div class="row">
+  <div class="col-xs-3">
+    <%= render 'users/info', user: current_user %>
 
-<div class="col-xs-3">
-  <%= render 'users/info', user: current_user %>
+    <%= render 'books/form', book: Book.new %>
+  </div>
 
-  <%= render 'books/form', book: Book.new %>
+  <div class="col-xs-9">
+    <h2>Users</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>image</th>
+          <th>name</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
+          <td><%= user.name %></td>
+          <td><%= link_to "show", user_path(user.id) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<div class="col-xs-9">
-  <h1>Users</h1>
-  <% @users.each do |user| %>
-    <%= link_to user_path(user) do %>
-      <%= attachment_image_tag user, :profile_image, format: 'jpeg', size: "10 x 10" %>
-    <% end %>
-    <p>
-      <%= user.name %>
-    </p>
-    <%= link_to "show", user_path(user.id) %>
-  <% end %>
-</div>
-

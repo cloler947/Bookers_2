@@ -5,11 +5,8 @@
 </div>
 
 <div class="col-xs-9">
-  <% @books.each do |book| %>
-
-    <%= link_to book.title, book_path(book.id) %>
-    <%= book.body %>
-
-  <% end %>
+  <h2>Books</h2>
+  <%= render 'books/index', books: @books %>
 </div>
+
 

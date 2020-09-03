@@ -17,7 +17,13 @@
 @import "bootstrap";
 
 
-body { padding-top: 70px; }
+body  {
+  margin-top: 51px;
+}
+
+#notice {
+  color: green;
+}
 
 .navbar-left span {
   font-size: 20px;
@@ -30,4 +36,8 @@ header {
 
 .col-xs-12 {
   width: 100%;
+}
+
+a:hover {
+  background-color: #000;
 }
