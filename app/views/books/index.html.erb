@@ -1,9 +1,13 @@
-<div class="col-xs-3">
-  <%= render 'users/info', user: current_user %>
-  <%= render 'books/form', book: Book.new %>
-</div>
+<%= render 'layouts/errors', obj: @book %>
 
-<div class="col-xs-9">
-  <h2>Books</h2>
-  <%= render 'books/index', books: @books %>
+<div class="row">
+  <div class="col-xs-3">
+    <%= render 'users/info', user: current_user %>
+    <%= render 'books/form', book: Book.new %>
+  </div>
+
+  <div class="col-xs-9">
+    <h2>Books</h2>
+    <%= render 'books/index', books: @books %>
+  </div>
 </div>
