@@ -15,6 +15,8 @@
           </td>
           <td><%= @book.title %></td>
           <td><%= @book.body %></td>
+
+          <!-- いいねボタン -->
           <td>
             <% if @book.favorited_by?(current_user) %>
               <%= link_to book_favorites_path(@book), method: :delete do %>
@@ -28,6 +30,10 @@
               <% end %>
             <% end %>
           </td>
+          <td>
+            コメント数:<%= @book.book_comments.count %>
+          </td>
+
           <% if @book.user == current_user %>
             <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-success" %></td>
             <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" =>  "本当に消しますか?", class: "btn btn-danger" %></td>
@@ -35,6 +41,19 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- コメントフォーム -->
+    <%= form_for [@book, @book_comment] do |f| %>
+      <%= f.text_area :comment %>
+      <%= f.submit "送信" %>
+    <% end %>
+
+    <!-- コメント一覧 -->
+    <% @book.book_comments.each do |book_comment| %>
+      <%= attachment_image_tag book_comment.user, :profile_image, :fill, 50, 50, format: "jpeg", fallback: "no_image.jp" %>
+      <%= book_comment.user.name %>
+      <%= book_comment.comment %>
+    <% end %>
 
   </div>
 </div>
