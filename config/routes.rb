@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root 'homes#home'
   get 'home/about', to: 'homes#about'
   resources :users do
-    resource :relationships, only: [:create, :destroy]
-    get 'follows' => 'relationships#follower', as: 'follows'
-    get 'followers' => 'relationships#followed', as: 'followers'
+    member do
+      get :following, :followers
+    end
   end
   resources :books do
     resources :book_comments, only: [:create, :destroy]
